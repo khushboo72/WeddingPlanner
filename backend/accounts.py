@@ -2,6 +2,7 @@ import mysql.connector
 from DBHelper import get_sql_connection
 from DBHelper import server_connection
 
+
 def create_databaseadmin(connection1):    
     cursor=connection1.cursor()
     query="CREATE DATABASE IF NOT EXISTS admin"
@@ -24,16 +25,15 @@ def admin_connection():
 
 def create_tableadmin(connection2):
     cursor = connection2.cursor()
-
-    create_accounts=('''CREATE TABLE IF NOT EXISTS accounts(user_id INT PRIMARY KEY AUTO_INCREMENT,username VARCHAR(50) NOT NULL,
-            userpassword VARCHAR(20) NOT NULL,email varchar(40),usercontact BIGINT)''')
+    create_accounts=('''CREATE TABLE IF NOT EXISTS accounts(user_id INT PRIMARY KEY AUTO_INCREMENT,usertype VARCHAR(20) NOT NULL,username VARCHAR(50) NOT NULL,
+            userpassword VARCHAR(20) NOT NULL,email varchar(40)NOT NULL,usercontact BIGINT NOT NULL)''')
     cursor.execute(create_accounts)
 
 
 def register(connection2,account):
     cursor=connection2.cursor()
-    query = ("INSERT INTO accounts(username,userpassword,email,usercontact) VALUES (%s,%s,%s,%s)")
-    data = ( account['username'], account['userpassword'],account['email'],account['usercontact'])
+    query = ("INSERT INTO accounts(username,usertype,userpassword,email,usercontact) VALUES (%s,%s,%s,%s,%s)")
+    data = ( account['username'],account['usertype'], account['userpassword'],account['email'],account['usercontact'])
     cursor.execute(query, data)
     connection2.commit()
 
@@ -65,4 +65,3 @@ if __name__ == '__main__':
         'usercontact': '9099716655'
     }))
     # print(delete_account(connection,3))
-    

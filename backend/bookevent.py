@@ -6,10 +6,9 @@ def insert_booking(connection, customerdetails):
     cursor = connection.cursor()
 
     # insert customer details
-    cust_query = (
-        "INSERT INTO customerdetails(custname,custcontact,custemail,custaddress,eventtype) VALUES (%s,%s,%s,%s,%s)")
+    cust_query = ("INSERT INTO customerdetails(custname,custcontact,custemail,custaddress,eventtype) VALUES (%s,%s,%s,%s,%s)")
     cust_data = (customerdetails['custname'], customerdetails['custcontact'],
-                 customerdetails['custemail'], customerdetails['custaddress'], customerdetails['eventtype'])
+    customerdetails['custemail'], customerdetails['custaddress'], customerdetails['eventtype'])
     cursor.execute(cust_query, cust_data)
     cust_id = cursor.lastrowid
     connection.commit()

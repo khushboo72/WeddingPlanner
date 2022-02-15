@@ -5,7 +5,6 @@ from DBHelper import get_sql_connection
 from DBHelper import create_table
 from accounts import admin_connection
 from accounts import create_tableadmin
-
 import bookevent
 import mysql.connector
 import json

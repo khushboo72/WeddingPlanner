@@ -65,15 +65,15 @@ def update_venue(connection, venues):
 if __name__ == '__main__':
     connection = get_sql_connection()
     # print(get_venue(connection))
-    print(insert_venue(connection, {  
-        'venuename': 'Paradise Farms',
-        'venueaddress': 'Adajan Main Road,Vapi ',
-        'venuecost': '89439.44',
-        'venuecontact': '9874538473',
-        'venuetype': 'outdoor',
-         'venuelimit':'800',
-        'venueimage': '8'
-    }))
+    # print(insert_venue(connection, {  
+    #     'venuename': 'Paradise Farms',
+    #     'venueaddress': 'Adajan Main Road,Vapi ',
+    #     'venuecost': '89439.44',
+    #     'venuecontact': '9874538473',
+    #     'venuetype': 'outdoor',
+    #      'venuelimit':'800',
+    #     'venueimage': '8'
+    # }))
     # print(delete_venue(connection, 27))
      
     # print(update_venue(connection, {

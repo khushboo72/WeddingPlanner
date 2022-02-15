@@ -51,14 +51,14 @@ def update_transport(connection,transports):
 if __name__ == '__main__':
     connection = get_sql_connection()
     #print(get_transport(connection))
-    print(insert_transport(connection, {  
-        'transportname': 'Yahi Travels',
-        'transporttype': 'Car',
-        'transportdetails':'BMW',
-        'transportcost': '5500',
-        'transportcontact':'6727263633'
+    # print(insert_transport(connection, {  
+    #     'transportname': 'Yahi Travels',
+    #     'transporttype': 'Car',
+    #     'transportdetails':'BMW',
+    #     'transportcost': '5500',
+    #     'transportcontact':'6727263633'
 
-    }))
+    # }))
     #print(delete_transport(connection, 3))
      
     # print(update_transport(connection, {
