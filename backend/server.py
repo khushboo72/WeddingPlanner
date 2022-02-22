@@ -1,10 +1,13 @@
-from flask import Flask, request, jsonify,session,render_template,redirect,url_for
+from flask import Flask
+from flask import request, jsonify,session,render_template,redirect,url_for
 import re
+from flask_mail import *
 from DBHelper import server_connection
 from DBHelper import get_sql_connection
 from DBHelper import create_table
 from accounts import admin_connection
 from accounts import create_tableadmin
+from random import * 
 import bookevent
 import mysql.connector
 import json
@@ -19,18 +22,50 @@ import seating
 import transport 
 import accounts
 
-
-
 connection1=server_connection()
 connection = get_sql_connection()
 connection2=admin_connection()
 create_table(connection)
 create_tableadmin(connection2)
+otp=randint(0000,9999)
 
 app = Flask(__name__)
-app.secret_key = 'khush'
+
+with open('config.json','r') as f:
+    parameter=json.load(f)['parameters']
 
 
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT']=465
+app.config['MAIL_USERNAME']=parameter['gmailuser']
+app.config['MAIL_PASSWORD']=parameter['gmailpassword']
+app.config['MAIL_USE_TLS']= False
+app.config['MAIL_USE_SSL']= True
+
+mail=Mail(app)
+
+@app.route('/email')
+def email():
+    msg=Message('mail',sender='demo@gmail.com',recipients=['gadiakhushboo@gmail.com'])
+    msg.body="this is a test mail"
+    mail.send(msg)
+    return "msg sent"
+
+@app.route('/verify',methods=['POST'])
+def emailverify():
+    gmail=request.form['email']
+    msg=Message('OTP',sender='demo@gmail.com',recipients=[gmail])
+    msg.body=str(otp)
+    mail.send(msg)
+    return "msg sent"
+
+
+@app.route('/validate',methods=['POST'])
+def emailvalidate():
+    userotp=request.form['otp']
+    if otp==int(userotp):
+        return "Email Verified Successfully"
+    return "Email not verified.Please try again"
 @app.route('/login',methods=['GET','POST'])
 def login():
     # Output message if something goes wrong...
