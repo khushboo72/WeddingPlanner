@@ -55,10 +55,6 @@ def create_table(connection):
            mealdetails TEXT,mealcost FLOAT NOT NULL,mealcontact BIGINT )''')
     cursor.execute(create_meal)
     
-    create_stage=('''CREATE TABLE IF NOT EXISTS stage(stage_id INT PRIMARY KEY AUTO_INCREMENT,stagename VARCHAR(50) NOT NULL,
-           stagedetails TEXT,stagecost FLOAT NOT NULL,stagecontact BIGINT,stageimage INT)''')
-    cursor.execute(create_stage)
-    
     create_equipment=('''CREATE TABLE IF NOT EXISTS equipment(equipment_id INT PRIMARY KEY AUTO_INCREMENT,equipmentname VARCHAR(50) NOT NULL,
            equipmentdetails TEXT,equipmentcost FLOAT NOT NULL,equipmentcontact BIGINT)''')
     cursor.execute(create_equipment)

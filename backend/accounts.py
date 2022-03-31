@@ -29,7 +29,7 @@ def create_tableadmin(connection2):
             userpassword VARCHAR(20) NOT NULL,email varchar(40)NOT NULL,usercontact BIGINT NOT NULL)''')
     cursor.execute(create_accounts)
 
-
+#need not to be included in the main program 
 def register(connection2,account):
     cursor=connection2.cursor()
     query = ("INSERT INTO accounts(username,usertype,userpassword,email,usercontact) VALUES (%s,%s,%s,%s,%s)")

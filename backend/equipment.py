@@ -3,7 +3,6 @@ from DBHelper import get_sql_connection
 
 
 def get_equipment(connection): 
-
     cursor = connection.cursor()
     query = ("SELECT * FROM equipment")
     cursor.execute(query)
@@ -18,7 +17,6 @@ def get_equipment(connection):
     return response
 
 def insert_equipment(connection,equipments): 
-
     cursor = connection.cursor()
     query = ("INSERT INTO equipment(equipmentname,equipmentdetails,equipmentcost,equipmentcontact) VALUES (%s,%s,%s,%s)")
     data = (equipments['equipmentname'], equipments['equipmentdetails'],

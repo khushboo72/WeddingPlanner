@@ -1,7 +1,6 @@
 import mysql.connector
 from DBHelper import get_sql_connection
 
-
 def insert_booking(connection, customerdetails):
     cursor = connection.cursor()
 
@@ -12,7 +11,6 @@ def insert_booking(connection, customerdetails):
     cursor.execute(cust_query, cust_data)
     cust_id = cursor.lastrowid
     connection.commit()
-
     #bill_id = cursor.lastrowid
     # insert equipmentdetails
     equipment_query = ( "INSERT INTO equipmentdetails (cust_id,equipment_id,quantity,totalprice) VALUES (%s,%s,%s,%s)")
